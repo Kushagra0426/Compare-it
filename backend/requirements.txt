@@ -1,0 +1,6 @@
+django
+cohere
+selenium
+webdriver-manager
+bs4
+django-cors-headers
