@@ -31,7 +31,7 @@ const ProductComparisonTable = ({ data }) => {
     return Object.keys(spec1).map((key) => (
       <TableRow key={key}>
         <TableCell component="th" scope="row" sx={{ backgroundColor: 'grey.200', fontWeight: 'bold' }}>{key}</TableCell>
-        <TableCell>{spec1[key] || 'N/A'}</TableCell>
+        <TableCell sx={{borderRight: '1px solid rgba(224, 224, 224, 1)'}}>{spec1[key] || 'N/A'}</TableCell>
         <TableCell>{spec2[key] || 'N/A'}</TableCell>
       </TableRow>
     ));
@@ -44,7 +44,7 @@ const ProductComparisonTable = ({ data }) => {
       </Typography>
       
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }}>
+        <Table sx={{ minWidth: 650, borderCollapse: 'separate', borderSpacing: 0 }}>
           <TableHead>
             <TableRow>
               <TableCell sx={{ backgroundColor: 'grey.500', fontWeight: 'bold' }}>Parameter</TableCell>
@@ -55,17 +55,17 @@ const ProductComparisonTable = ({ data }) => {
           <TableBody>
             <TableRow>
               <TableCell component="th" scope="row" sx={{ backgroundColor: 'grey.200', fontWeight: 'bold' }}>Price</TableCell>
-              <TableCell>{product_details[0].product_price}</TableCell>
+              <TableCell sx={{ borderRight: '1px solid rgba(224, 224, 224, 1)' }}>{product_details[0].product_price}</TableCell>
               <TableCell>{product_details[1].product_price}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell component="th" scope="row" sx={{ backgroundColor: 'grey.200', fontWeight: 'bold' }}>Rating</TableCell>
-              <TableCell>{product_details[0].product_rating}</TableCell>
+              <TableCell sx={{ borderRight: '1px solid rgba(224, 224, 224, 1)' }}>{product_details[0].product_rating}</TableCell>
               <TableCell>{product_details[1].product_rating}</TableCell>
             </TableRow>
             <TableRow>
               <TableCell component="th" scope="row" sx={{ backgroundColor: 'grey.200', fontWeight: 'bold' }}>Key Highlights</TableCell>
-              <TableCell>{renderHighlights(highlights[0])}</TableCell>
+              <TableCell sx={{ borderRight: '1px solid rgba(224, 224, 224, 1)' }}>{renderHighlights(highlights[0])}</TableCell>
               <TableCell>{renderHighlights(highlights[1])}</TableCell>
             </TableRow>
             {Object.keys(specifications[0]).map((section) => (

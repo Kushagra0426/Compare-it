@@ -8,7 +8,7 @@ import {
   CircularProgress 
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import Constants from '../../Constants';
+import Constants from '../Constants';
 import axios from 'axios';
 
 const Home = () => {
