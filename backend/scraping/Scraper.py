@@ -6,6 +6,7 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.keys import Keys
 import time
 import sys
+import os
 
 def scrapeFlipkartReviews(url, driver):
     try:
@@ -60,7 +61,10 @@ def scrapeFlipkart(url):
     
     firefox_options = webdriver.FirefoxOptions()
     firefox_options.add_argument("--headless")
-    driver = webdriver.Firefox(options=firefox_options)
+    driver = webdriver.Firefox(
+        options=firefox_options,
+        executable_path=os.path.expanduser('~/.local/bin/geckodriver')
+    )
 
     try:
 
