@@ -63,8 +63,10 @@ def scrapeFlipkart(url):
     firefox_options = webdriver.FirefoxOptions()
     firefox_options.add_argument("--headless")
     
-    # For Selenium 4+ (recommended approach)
-    service = Service(executable_path=os.path.expanduser('~/.local/bin/geckodriver'))
+    # Explicit paths for Render
+    firefox_options.binary_location = '/usr/bin/firefox'  # Standard Firefox location
+    service = Service(executable_path='/tmp/bin/geckodriver')
+    
     driver = webdriver.Firefox(service=service, options=firefox_options)
 
     try:
