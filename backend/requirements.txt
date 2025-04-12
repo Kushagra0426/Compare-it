@@ -1,6 +1,10 @@
 django
+djangorestframework
 cohere
 selenium
 webdriver-manager
 bs4
 django-cors-headers
+gunicorn
+python-dotenv
+requests
