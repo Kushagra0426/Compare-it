@@ -10,4 +10,4 @@ services:
       tar -xvzf geckodriver*
       chmod +x geckodriver
       sudo mv geckodriver /usr/local/bin/
-    # startCommand: gunicorn backend.wsgi:application --workers 2 --timeout 120 --bind 0.0.0.0:$PORT
+    startCommand: gunicorn backend.wsgi:application --workers 2 --timeout 120 --bind 0.0.0.0:$PORT
