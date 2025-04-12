@@ -28,7 +28,7 @@ def generate_response(request):
 
         product1_details = scrapeFlipkart(product1)
         time.sleep(10)
-        print("waits...")
+        # print("waits...")
         product2_details = scrapeFlipkart(product2)
 
         product_details = []
@@ -77,8 +77,9 @@ def generate_response(request):
         specifications.append(updated_product2_specifications)
 
         prompt = f"""You are given the product details of some products. Compare the product details of {product1_details['title']['product_name']} and 
-                {product2_details['title']['product_name']} and tell which one is better by giving a brief conclusion irrespective of individual preferences 
-                and budget constraints and telling the user which one to purchase. 
+                {product2_details['title']['product_name']} and tell which one is better by giving a brief conclusion summary of not more than 100 words 
+                irrespective of individual preferences and budget constraints and telling the user which one to purchase. Don't show much comparison details
+                here, just give your opinion. Return plain text without any formatting.
                 The details of the products are given below:\n {product1_details} and {product2_details}"""
 
         response = client.chat(

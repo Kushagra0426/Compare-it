@@ -67,7 +67,9 @@ def scrapeFlipkart(url):
         driver.get(url)
 
         time.sleep(30)
-
+        # Take screenshot of the product page
+        screenshot_name = "product_screenshot.png"
+        driver.save_screenshot(screenshot_name)
         title = driver.find_element(By.CLASS_NAME, 'C7fEHH')
 
         highlights = driver.find_element(By.CLASS_NAME, 'U\+9u4y')
