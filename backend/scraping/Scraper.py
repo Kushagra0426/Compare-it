@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.keys import Keys
 import time
 import sys
@@ -61,10 +62,10 @@ def scrapeFlipkart(url):
     
     firefox_options = webdriver.FirefoxOptions()
     firefox_options.add_argument("--headless")
-    driver = webdriver.Firefox(
-        options=firefox_options,
-        executable_path=os.path.expanduser('~/.local/bin/geckodriver')
-    )
+    
+    # For Selenium 4+ (recommended approach)
+    service = Service(executable_path=os.path.expanduser('~/.local/bin/geckodriver'))
+    driver = webdriver.Firefox(service=service, options=firefox_options)
 
     try:
 
