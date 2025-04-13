@@ -62,15 +62,18 @@ def scrapeFlipkartReviews(url, driver):
 def scrapeFlipkart(url):
     print("Firefox path:", shutil.which("firefox"))
     print("Geckodriver path:", shutil.which("geckodriver"))
+    print("Current PATH:", os.environ.get('PATH'))
+    print("Firefox exists:", os.path.exists('/usr/bin/firefox'))
+    print("Geckodriver exists:", os.path.exists('/tmp/bin/geckodriver'))
     
-    firefox_options = webdriver.FirefoxOptions()
+    firefox_options = Options()
     firefox_options.add_argument("--headless")
     
     # Explicit paths for Render
     firefox_options.binary_location = '/usr/bin/firefox'  # Standard Firefox location
     service = Service(
-        executable_path=os.path.expanduser('~/.local/bin/geckodriver'),
-        log_path=os.devnull  # Disable geckodriver logs
+        executable_path='/tmp/bin/geckodriver',
+        log_path=os.devnull
     )
     
     driver = webdriver.Firefox(service=service, options=firefox_options)
