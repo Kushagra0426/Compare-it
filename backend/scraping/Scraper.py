@@ -8,6 +8,7 @@ from selenium.webdriver.common.keys import Keys
 import time
 import sys
 import os
+import shutil
 
 def scrapeFlipkartReviews(url, driver):
     try:
@@ -59,13 +60,18 @@ def scrapeFlipkartReviews(url, driver):
         return []
 
 def scrapeFlipkart(url):
+    print("Firefox path:", shutil.which("firefox"))
+    print("Geckodriver path:", shutil.which("geckodriver"))
     
     firefox_options = webdriver.FirefoxOptions()
     firefox_options.add_argument("--headless")
     
     # Explicit paths for Render
-    # firefox_options.binary_location = '/usr/bin/firefox'  # Standard Firefox location
-    service = Service(executable_path='./geckodriver')
+    firefox_options.binary_location = '/usr/bin/firefox'  # Standard Firefox location
+    service = Service(
+        executable_path=os.path.expanduser('~/.local/bin/geckodriver'),
+        log_path=os.devnull  # Disable geckodriver logs
+    )
     
     driver = webdriver.Firefox(service=service, options=firefox_options)
 
