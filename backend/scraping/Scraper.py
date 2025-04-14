@@ -3,9 +3,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.options import Options
-from selenium.webdriver.firefox.service import Service
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.keys import Keys
-from webdriver_manager.firefox import GeckoDriverManager
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 import sys
 import os
@@ -67,14 +67,20 @@ def scrapeFlipkart(url):
     # print("Firefox exists:", os.path.exists('/usr/bin/firefox'))
     # print("Geckodriver exists:", os.path.exists('/tmp/bin/geckodriver'))
     
-    firefox_options = Options()
-    firefox_options.add_argument("--headless")
+    # firefox_options = Options()
+    # firefox_options.add_argument("--headless")
     
     # Explicit paths for Render
-    firefox_options.binary_location = '/usr/bin/firefox'  # Standard Firefox location
-    service = Service(executable_path=GeckoDriverManager().install())
+    # firefox_options.binary_location = '/usr/bin/firefox'  # Standard Firefox location
+    # service = Service(executable_path=GeckoDriverManager().install())
     
-    driver = webdriver.Firefox(service=service, options=firefox_options)
+    # driver = webdriver.Firefox(service=service, options=firefox_options)
+
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=chrome_options)
 
     try:
 
