@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.keys import Keys
+from webdriver_manager.firefox import GeckoDriverManager
 import time
 import sys
 import os
@@ -60,21 +61,18 @@ def scrapeFlipkartReviews(url, driver):
         return []
 
 def scrapeFlipkart(url):
-    print("Firefox path:", shutil.which("firefox"))
-    print("Geckodriver path:", shutil.which("geckodriver"))
-    print("Current PATH:", os.environ.get('PATH'))
-    print("Firefox exists:", os.path.exists('/usr/bin/firefox'))
-    print("Geckodriver exists:", os.path.exists('/tmp/bin/geckodriver'))
+    # print("Firefox path:", shutil.which("firefox"))
+    # print("Geckodriver path:", shutil.which("geckodriver"))
+    # print("Current PATH:", os.environ.get('PATH'))
+    # print("Firefox exists:", os.path.exists('/usr/bin/firefox'))
+    # print("Geckodriver exists:", os.path.exists('/tmp/bin/geckodriver'))
     
     firefox_options = Options()
     firefox_options.add_argument("--headless")
     
     # Explicit paths for Render
-    firefox_options.binary_location = '/usr/bin/firefox'  # Standard Firefox location
-    service = Service(
-        executable_path='/tmp/bin/geckodriver',
-        log_path=os.devnull
-    )
+    # firefox_options.binary_location = '/usr/bin/firefox'  # Standard Firefox location
+    service = Service(executable_path=GeckoDriverManager().install())
     
     driver = webdriver.Firefox(service=service, options=firefox_options)
 
