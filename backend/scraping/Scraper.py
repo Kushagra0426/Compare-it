@@ -71,7 +71,7 @@ def scrapeFlipkart(url):
     firefox_options.add_argument("--headless")
     
     # Explicit paths for Render
-    # firefox_options.binary_location = '/usr/bin/firefox'  # Standard Firefox location
+    firefox_options.binary_location = '/usr/bin/firefox'  # Standard Firefox location
     service = Service(executable_path=GeckoDriverManager().install())
     
     driver = webdriver.Firefox(service=service, options=firefox_options)
